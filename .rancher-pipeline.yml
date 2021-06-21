@@ -32,10 +32,10 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: happyit/myapp:v1.0.0
-      pushRemote: true
-      registry: 127.0.0.1:34214
-    env:
-      PLUGIN_INSECURE: "true"
+#      pushRemote: true
+#      registry: 127.0.0.1:34214
+#    env:
+#      PLUGIN_INSECURE: "true"
 - name: Deploy some workloads
   steps:
   - applyYamlConfig:
