@@ -32,6 +32,8 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: happyit/myapp:v1.0.0
+      pushRemote: true
+      registry: 127.0.0.1:34214
 - name: Deploy some workloads
   steps:
   - applyYamlConfig:
