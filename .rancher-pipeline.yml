@@ -1,10 +1,4 @@
 stages:
-- name: Build and Publish
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: example/app:v1
 - name: Deploy
   steps:
   - applyYamlConfig:
