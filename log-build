@@ -1,0 +1,143 @@
++ /usr/local/bin/dockerd-entrypoint.sh /bin/drone-docker
++ /usr/local/bin/dockerd --data-root /var/lib/docker
+Detected registry credentials
++ /usr/local/bin/docker version
+Client: Docker Engine - Community
+ Version:           18.09.0
+ API version:       1.39
+ Go version:        go1.10.4
+ Git commit:        4d60db4
+ Built:             Wed Nov  7 00:46:51 2018
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.0
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.4
+  Git commit:       4d60db4
+  Built:            Wed Nov  7 00:52:55 2018
+  OS/Arch:          linux/amd64
+  Experimental:     false
++ /usr/local/bin/docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 0
+Server Version: 18.09.0
+Storage Driver: overlay2
+ Backing Filesystem: extfs
+ Supports d_type: true
+ Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 468a545b9edcd5932818eb9de8e72413e616e86e
+runc version: 69663f0bd4b60df09991c08812a60108003fa340
+init version: fec3683
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.19.182
+Operating System: Alpine Linux v3.8 (containerized)
+OSType: linux
+Architecture: x86_64
+CPUs: 8
+Total Memory: 15.29GiB
+Name: buildpod.pipeline-p-gt4tz-1.1-bhcf9-fg6wd
+ID: 5NRX:SAU3:DE2W:ZPEV:7U5F:SVAV:T5LY:PEYJ:FGDF:2WIP:WT6P:CQ6Q
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Labels:
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+Product License: Community Engine
+
+WARNING: bridge-nf-call-iptables is disabled
+WARNING: bridge-nf-call-ip6tables is disabled
++ /usr/local/bin/docker build --rm=true -f ./Dockerfile -t 00000000 . --pull=true --label org.label-schema.schema-version=1.0 --label org.label-schema.build-date=2021-06-22T00:35:37Z --label org.label-schema.vcs-ref=00000000 --label org.label-schema.vcs-url=
+Sending build context to Docker daemon  664.6kB
+
+Step 1/5 : FROM nginx
+latest: Pulling from library/nginx
+69692152171a: Pulling fs layer
+30afc0b18f67: Pulling fs layer
+596b1d696923: Pulling fs layer
+febe5bd23e98: Pulling fs layer
+8283eee92e2f: Pulling fs layer
+351ad75a6cfa: Pulling fs layer
+febe5bd23e98: Waiting
+8283eee92e2f: Waiting
+351ad75a6cfa: Waiting
+596b1d696923: Verifying Checksum
+596b1d696923: Download complete
+febe5bd23e98: Verifying Checksum
+febe5bd23e98: Download complete
+8283eee92e2f: Verifying Checksum
+351ad75a6cfa: Verifying Checksum
+351ad75a6cfa: Download complete
+30afc0b18f67: Verifying Checksum
+30afc0b18f67: Download complete
+69692152171a: Verifying Checksum
+69692152171a: Download complete
+69692152171a: Pull complete
+30afc0b18f67: Pull complete
+596b1d696923: Pull complete
+febe5bd23e98: Pull complete
+8283eee92e2f: Pull complete
+351ad75a6cfa: Pull complete
+Digest: sha256:6d75c99af15565a301e48297fa2d121e15d80ad526f8369c526324f0f7ccb750
+Status: Downloaded newer image for nginx:latest
+ ---> d1a364dc548d
+Step 2/5 : LABEL org.label-schema.build-date=2021-06-22T00:35:37Z
+ ---> Running in 0100390961e8
+Removing intermediate container 0100390961e8
+ ---> 112ceedd9c52
+Step 3/5 : LABEL org.label-schema.schema-version=1.0
+ ---> Running in 637f4a5c5ed2
+Removing intermediate container 637f4a5c5ed2
+ ---> 10a2cc9f12d7
+Step 4/5 : LABEL org.label-schema.vcs-ref=00000000
+ ---> Running in 5344e9c9d0bf
+Removing intermediate container 5344e9c9d0bf
+ ---> 7493294ee459
+Step 5/5 : LABEL org.label-schema.vcs-url=
+ ---> Running in 89c70693e421
+Removing intermediate container 89c70693e421
+ ---> c0d130064a41
+Successfully built c0d130064a41
+Successfully tagged 00000000:latest
++ /usr/local/bin/docker tag 00000000 docker-registry.p-qnks7-pipeline/example/app:v1
++ /usr/local/bin/docker push docker-registry.p-qnks7-pipeline/example/app:v1
+The push refers to repository [docker-registry.p-qnks7-pipeline/example/app]
+075508cf8f04: Preparing
+5c865c78bc96: Preparing
+134e19b2fac5: Preparing
+83634f76e732: Preparing
+766fe2c3fc08: Preparing
+02c055ef67f5: Preparing
+02c055ef67f5: Waiting
+83634f76e732: Pushed
+5c865c78bc96: Pushed
+134e19b2fac5: Pushed
+075508cf8f04: Pushed
+766fe2c3fc08: Pushed
+02c055ef67f5: Pushed
+v1: digest: sha256:9cc2f59f7d64137c3bde57d4ea3ce8b0f5ba998a7c23750d134dbf2cadeee675 size: 1570
++ /usr/local/bin/docker rmi 00000000
+Untagged: 00000000:latest
++ /usr/local/bin/docker system prune -f
+Total reclaimed space: 0B
