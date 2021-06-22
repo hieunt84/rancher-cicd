@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: example/app:v1
+      tag: happyit/app:v1
       pushRemote: true
       registry: index.docker.io
 - name: Deploy
