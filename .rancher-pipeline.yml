@@ -1,5 +1,6 @@
+#example 1
 stages:
-- name: Builld and Publish
+- name: Publish my image
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
@@ -7,9 +8,15 @@ stages:
       tag: happyit/app:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: index.docker.io
-- name: Deploy
+- name: Deploy some workloads
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-timeout: 60
-notification: {}
+
+# branch conditions for the pipeline
+branch:
+  include: [ master, feature/*]
+  exclude: [ dev ]
+
+# timeout in minutes
+timeout: 30
