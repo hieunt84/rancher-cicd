@@ -1,6 +1,6 @@
 #example 1
 stages:
-- name: Publish my image
+- name: Build and Publish my image
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
