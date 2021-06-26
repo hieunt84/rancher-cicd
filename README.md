@@ -18,13 +18,14 @@
     Ref: https://rancher.com/docs/rancher/v2.5/en/pipelines/
 
     1. Create Project
-       - tổ chức các tài nguyên trong project như: namespace, worload, ...
+       -organize k8s resource as : namespace, worload, ...
     2. Add a Repository for project
-      -Config webhood automatically.
+       -Config webhood automatically.
     
     3. Create pipeline for a project.
-       -Mỗi project chỉ có pipeline.
+       -each project have only one pipeline.
        -pipeline maybe has many branchs as master(production), dev(developing),...
     4. Run pipeline.
     
-    5. Enjoy result.
+    5. Enjoy result !!!
+    6. Thanks !!!
